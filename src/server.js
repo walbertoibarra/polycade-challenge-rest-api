@@ -1,10 +1,3 @@
-import path from 'path';
-
-require('dotenv').config({
-	debug: process.env.DEBUG,
-	path: path.join(__dirname, '../.env')
-});
-
 import application from 'app';
 import config from 'config';
 
