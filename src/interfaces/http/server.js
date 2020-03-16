@@ -1,20 +1,16 @@
 import Koa from 'koa';
-import Router from 'koa-router';
 import bodyParser from 'koa-bodyparser';
 
 import cache from 'domain/cache';
 import httpConfig from 'config/http';
+import router from 'interfaces/http/router';
 
 const app = new Koa();
-const router = new Router();
 let server;
 
-router
-	.get('/', (ctx, next) => {
-		ctx.body = 'hello world';
-	});
-
 app
+	// .use(errorHandlerMiddleware())
+	// .use(responseHandlerMiddleware())
 	.use(bodyParser())
 	.use(router.routes())
 	.use(router.allowedMethods());

@@ -1,22 +1,6 @@
-import Koa from 'koa';
-import Router from 'koa-router';
-import bodyParser from 'koa-bodyparser';
-
 import database from 'infra/database';
 import http from 'interfaces/http';
 import config from 'config';
-
-const app = new Koa();
-const router = new Router();
-
-router
-	.get('/', (ctx, next) => {
-		ctx.body = 'hello world';
-	});
-
-app
-	.use(bodyParser())
-	.use(router.routes());
 
 const start = async () => {
 	await Promise.all([
