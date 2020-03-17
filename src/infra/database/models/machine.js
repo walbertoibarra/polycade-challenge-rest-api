@@ -4,7 +4,7 @@ class Machine extends sequelize.Model {
 	static init (sequelize, Sequelize) {
 		return super.init({
 			id: {
-				type: Sequelize.STRING(64),
+				type: Sequelize.UUID,
 				primaryKey: true,
 				allowNull: false
 			},

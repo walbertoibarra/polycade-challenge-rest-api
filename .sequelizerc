@@ -1,8 +1,28 @@
-const { database: { options: config } } = require('config');
+const path = require('path');
+
+require('dotenv').config({
+	debug: process.env.DEBUG,
+	path: path.join(__dirname, '.env')
+});
+
+const {
+	database: {
+		options: {
+			dialect,
+			username,
+			password,
+			host,
+			port,
+			database
+		}
+	}
+} = require('config');
+
+const url = `${dialect}://${username}:${password}@${host}:${port}/${database}`;
 
 module.exports = {
-	config,
 	'models-path': path.join(__dirname, 'src/infra/database/models'),
 	'seeders-path': path.join(__dirname, 'src/infra/sequelize/seeders'),
 	'migrations-path': path.join(__dirname, 'src/infra/sequelize/migrations'),
+	url
 };
