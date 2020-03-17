@@ -1,10 +1,10 @@
-import Router from 'koa-router';
+const Router = require('koa-router');
 
-import { pricingModelController } from 'interfaces/http/controllers';
+const { pricingModelController } = require('interfaces/http/controllers');
 
 const pricingModelRouter = new Router({ prefix: '/pricing-models' });
 
 // Pricing model routes.
 pricingModelRouter.get('/', pricingModelController.find);
 
-export default pricingModelRouter;
+module.exports = pricingModelRouter;

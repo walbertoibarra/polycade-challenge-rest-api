@@ -5,4 +5,4 @@ const Environment = Object.freeze({
 	Production: 'production'
 });
 
-export default Environment;
+module.exports = Environment;

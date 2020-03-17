@@ -1,11 +1,11 @@
-import fs from 'fs';
-import path from 'path';
+const fs = require('fs');
+const path = require('path');
 
-import lib from 'domain/lib';
+const lib = require('domain/lib');
 
 const models = { };
 
-export default (sequelize, Sequelize) => {
+module.exports = (sequelize, Sequelize) => {
 	if (lib.utils.isEmptyObject(models)) {
 		fs
 			.readdirSync(path.join(__dirname))

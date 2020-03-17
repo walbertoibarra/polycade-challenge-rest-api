@@ -4,9 +4,11 @@
 	"main": "src/server.js",
 	"scripts": {
 		"lint": "eslint .",
-		"start": "cross-env NODE_PATH=./src babel-node -r ./src/config-envs .",
+		"seed:all": "cross-env NODE_PATH=./src sequelize-cli db:seed:all",
+		"seed:undo": "cross-env NODE_PATH=./src sequelize-cli db:seed:undo",
+		"start": "cross-env NODE_PATH=./src node .",
 		"test": "cross-env NODE_PATH=./src jest",
-		"watch": "cross-env NODE_PATH=./src nodemon --exec babel-node -r ./src/config-envs  --watch .",
+		"watch": "cross-env NODE_PATH=./src nodemon .",
 		"watch-test": "cross-env NODE_PATH=./src jest --watch"
 	},
 	"license": "MIT",
@@ -21,13 +23,10 @@
 		"pg-hstore": "2.3.3",
 		"pretty-ms": "6.0.1",
 		"sequelize": "5.21.5",
+		"sequelize-cli": "5.5.1",
 		"uuid": "3.4.0"
 	},
 	"devDependencies": {
-		"@babel/core": "7.8.3",
-		"@babel/node": "7.8.3",
-		"@babel/preset-env": "7.3.4",
-		"babel-eslint": "10.0.3",
 		"eslint": "6.8.0",
 		"jest": "25.1.0",
 		"nodemon": "2.0.2"

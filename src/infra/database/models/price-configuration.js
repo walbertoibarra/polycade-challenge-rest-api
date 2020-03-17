@@ -1,4 +1,4 @@
-import sequelize from 'sequelize';
+const sequelize = require('sequelize');
 
 class PriceConfiguration extends sequelize.Model {
 	static init (sequelize, Sequelize) {

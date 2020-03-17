@@ -1,8 +1,8 @@
-import prettyMilliseconds from 'pretty-ms';
+const prettyMilliseconds = require('pretty-ms');
 
-import cache from 'domain/cache';
-import config from 'config';
-import _enum from 'domain/enum';
+const cache = require('domain/cache');
+const { server: config } = require('config');
+const { Status } = require('domain/enum');
 
 // Taken from ActionHero. https://github.com/actionhero/actionhero/blob/master/actions/status.js
 const checkRam = () => {
@@ -11,8 +11,8 @@ const checkRam = () => {
 		problems: []
 	};
 
-	if (ram.consumedMemoryMb > config.server.node.maxMemoryAllocated) {
-		ram.problems.push(`Using ${ram.consumedMemoryMb} MB, which is more than the max ${config.server.node.maxMemoryAllocated} MB of RAM/HEAP`);
+	if (ram.consumedMemoryMb > config.node.maxMemoryAllocated) {
+		ram.problems.push(`Using ${ram.consumedMemoryMb} MB, which is more than the max ${config.node.maxMemoryAllocated} MB of RAM/HEAP`);
 	}
 
 	return ram;
@@ -26,21 +26,21 @@ const check = async () => {
 	];
 
 	if (problems.length) {
-		console.warn(`Node status is: ${_enum.Status.Unhealthy}`, problems);
+		console.warn(`Node status is: ${Status.Unhealthy}`, problems);
 	}
 
 	return {
 		nodeStatus: problems.length
-			? _enum.Status.Unhealthy
-			: _enum.Status.Healthy,
+			? Status.Unhealthy
+			: Status.Healthy,
 		problems,
-		instance: config.server.node.appInstance,
+		instance: config.node.appInstance,
 		uptime: prettyMilliseconds((new Date()).getTime() - cache.httpBootTime),
-		name: config.server.name,
-		version: config.server.version
+		name: config.name,
+		version: config.version
 	};
 };
 
-export default {
+module.exports = {
 	check
 };

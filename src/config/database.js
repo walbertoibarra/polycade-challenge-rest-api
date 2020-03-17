@@ -1,16 +1,16 @@
-import _enum from 'domain/enum';
-import lib from 'domain/lib';
+const { Schema } = require('domain/enum');
+const { utils, validator } = require('domain/lib');
 
 const { env } = process;
 
-lib.validator.validateEnvironmentVariables([
+validator.validateEnvironmentVariables([
 	'POSTGRES_HOST',
 	'POSTGRES_DB',
 	'POSTGRES_USER',
 	'POSTGRES_PASSWORD'
 ]);
 
-const debug = lib.utils.isTrue(env.POSTGRES_DEBUG);
+const debug = utils.isTrue(env.POSTGRES_DEBUG);
 
 const proxyLog = (executed, v, data) => {
 	const { sequelize, ...otherData } = data;
@@ -21,7 +21,7 @@ const proxyLog = (executed, v, data) => {
 const database = {
 	debug,
 	// This will drop all tables and create them again (to avoid use of migrations when developing).
-	forceSync: lib.utils.isDev() && lib.utils.isTrue(env.POSTGRES_DEV_FORCE_SYNC),
+	forceSync: utils.isDev() && utils.isTrue(env.POSTGRES_DEV_FORCE_SYNC),
 	options: {
 		host: env.POSTGRES_HOST,
 		port: Number(env.POSTGRES_PORT) || 5432,
@@ -31,7 +31,7 @@ const database = {
 		dialect: 'postgres',
 		define: {
 			paranoid: true,
-			schema: _enum.Schema.Public,
+			schema: Schema.Public,
 			timestamps: true
 		},
 		logging: debug ? proxyLog : false,
@@ -43,4 +43,4 @@ const database = {
 	}
 };
 
-export default database;
+module.exports = database;

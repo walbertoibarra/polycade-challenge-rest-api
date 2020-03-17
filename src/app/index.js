@@ -1,6 +1,6 @@
-import database from 'infra/database';
-import http from 'interfaces/http';
-import config from 'config';
+const database = require('infra/database');
+const http = require('interfaces/http');
+const { server } = require('config');
 
 const start = async () => {
 	await Promise.all([
@@ -12,7 +12,7 @@ const start = async () => {
 		http.start()
 	]);
 
-	console.log(`Started ${config.server.name} on version ${config.server.version}`);
+	console.log(`Started ${server.name} on version ${server.version}`);
 };
 
 const stop = async () => {
@@ -26,7 +26,7 @@ const stop = async () => {
 	]);
 };
 
-export default {
+module.exports = {
 	start,
 	stop
 };

@@ -1,8 +1,8 @@
-import database from 'config/database';
-import http from 'config/http';
-import server from 'config/server';
+const database = require('config/database');
+const http = require('config/http');
+const server = require('config/server');
 
-export default {
+module.exports = {
 	database,
 	http,
 	server

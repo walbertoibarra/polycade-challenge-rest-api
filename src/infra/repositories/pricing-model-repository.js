@@ -1,4 +1,4 @@
-import { db } from 'infra/database';
+const { db } = require('infra/database');
 
 const list = async () => {
 	const options = {
@@ -10,6 +10,6 @@ const list = async () => {
 	return db.models.pricingModel.findAll(options);
 };
 
-export default {
+module.exports = {
 	list
 };

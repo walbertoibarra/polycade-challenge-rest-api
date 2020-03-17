@@ -1,6 +1,6 @@
-import config from 'config';
-import _enum from 'domain/enum';
-import db from 'infra/sequelize';
+const config = require('config');
+const { Schema } = require('domain/enum');
+const db = require('infra/sequelize');
 
 const start = async () => {
 	await db.sequelize.authenticate();
@@ -9,7 +9,7 @@ const start = async () => {
 	if (config.database.forceSync) {
 		console.log('Dropping all tables and creating them again');
 
-		await db.sequelize.createSchema(_enum.Schema.Public);
+		await db.sequelize.createSchema(Schema.Public);
 		await db.sequelize.sync({ force: true });
 	}
 
@@ -22,11 +22,8 @@ const stop = async () => {
 	console.log('Disconnected from Postgres DB');
 };
 
-export default {
+module.exports = {
+	db,
 	start,
 	stop
-};
-
-export {
-	db
 };

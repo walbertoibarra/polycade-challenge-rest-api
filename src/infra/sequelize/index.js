@@ -1,13 +1,13 @@
 // https://github.com/sequelize/sequelize/issues/3781#issuecomment-104278869
-import pg from 'pg';
-import Sequelize from 'sequelize';
+const pg = require('pg');
+const Sequelize = require('sequelize');
 
 delete pg.native;
 
-import config from 'config';
-import models from 'infra/database/models';
+const { database: { options: config } } = require('config');
+const models = require('infra/database/models');
 
-const sequelize = new Sequelize(config.database.options);
+const sequelize = new Sequelize(config);
 
 const db = {
 	sequelize,

@@ -1,9 +1,9 @@
-import Router from 'koa-router';
+const Router = require('koa-router');
 
-import { healthController } from 'interfaces/http/controllers';
+const { healthController } = require('interfaces/http/controllers');
 
 const router = new Router();
 
 router.get('/health', healthController.healthCheck);
 
-export default router;
+module.exports = router;

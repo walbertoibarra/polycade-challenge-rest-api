@@ -1,5 +1,12 @@
-import application from 'app';
-import config from 'config';
+const path = require('path');
+
+require('dotenv').config({
+	debug: process.env.DEBUG,
+	path: path.join(__dirname, '../.env')
+});
+
+const application = require('app');
+const config = require('config');
 
 const gracefulShutdown = () => {
 	// Force the process to not exit instantly.

@@ -1,8 +1,8 @@
-import Environment from 'domain/enum/environment';
-import Schema from 'domain/enum/schema';
-import Status from 'domain/enum/status';
+const Environment = require('domain/enum/environment');
+const Schema = require('domain/enum/schema');
+const Status = require('domain/enum/status');
 
-export default {
+module.exports = {
 	Environment,
 	Schema,
 	Status

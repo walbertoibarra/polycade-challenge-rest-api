@@ -1,9 +1,9 @@
-import Koa from 'koa';
-import bodyParser from 'koa-bodyparser';
+const Koa = require('koa');
+const bodyParser = require('koa-bodyparser');
 
-import cache from 'domain/cache';
-import httpConfig from 'config/http';
-import router from 'interfaces/http/router';
+const cache = require('domain/cache');
+const httpConfig = require('config/http');
+const router = require('interfaces/http/router');
 
 const app = new Koa();
 let server;
@@ -56,7 +56,7 @@ const stop = () => {
 	});
 };
 
-export default {
+module.exports = {
 	listen,
 	stop
 };

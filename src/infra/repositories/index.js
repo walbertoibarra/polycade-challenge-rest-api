@@ -1,5 +1,5 @@
-import pricingModelRepository from 'infra/repositories/pricing-model-repository';
+const pricingModelRepository = require('infra/repositories/pricing-model-repository');
 
-export {
+module.exports = {
 	pricingModelRepository
 };

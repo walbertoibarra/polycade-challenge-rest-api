@@ -1,5 +1,5 @@
-import _enum from 'domain/enum';
-import { name, version } from '../../package.json';
+const { Environment } = require('domain/enum');
+const { name, version } = require('../../package.json');
 
 const { env } = process;
 
@@ -11,9 +11,9 @@ module.exports = {
 		debug: env.DEBUG || false,
 
 		// Only allow for specific Node environments.
-		env: Object.values(_enum.Environment).includes(env.NODE_ENV)
+		env: Object.values(Environment).includes(env.NODE_ENV)
 			? env.NODE_ENV
-			: _enum.Environment.Development,
+			: Environment.Development,
 
 		// These values are probably good starting points.
 		maxMemoryAllocated: Number(env.MAX_MEMORY_ALLOCATED) || 500

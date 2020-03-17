@@ -6,6 +6,6 @@ const validateEnvironmentVariables = (requiredEnvVars) => {
 	});
 };
 
-export default {
+module.exports = {
 	validateEnvironmentVariables
 };

@@ -1,8 +1,8 @@
 
-import utils from 'domain/lib/utils';
-import validator from 'domain/lib/validator';
+const utils = require('domain/lib/utils');
+const validator = require('domain/lib/validator');
 
-export default {
+module.exports = {
 	utils,
 	validator
 };

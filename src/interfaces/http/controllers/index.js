@@ -1,7 +1,7 @@
-import healthController from 'interfaces/http/controllers/health-controller';
-import pricingModelController from 'interfaces/http/controllers/pricing-model-controller';
+const healthController = require('interfaces/http/controllers/health-controller');
+const pricingModelController = require('interfaces/http/controllers/pricing-model-controller');
 
-export {
+module.exports = {
 	healthController,
 	pricingModelController
 };

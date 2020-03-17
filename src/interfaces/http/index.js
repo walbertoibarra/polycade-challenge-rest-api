@@ -1,6 +1,6 @@
-import server from 'interfaces/http/server';
+const server = require('interfaces/http/server');
 
-export default {
+module.exports = {
 	start: server.listen,
 	stop: server.stop
 };

@@ -3,4 +3,4 @@ const Status = Object.freeze({
 	Unhealthy: 'Unhealthy'
 });
 
-export default Status;
+module.exports = Status;

@@ -1,5 +1,5 @@
-import list from 'app/pricing-model/list';
+const list = require('app/pricing-model/list');
 
-export {
-	list
+module.exports = {
+	...list
 };

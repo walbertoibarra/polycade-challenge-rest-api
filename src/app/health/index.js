@@ -1,5 +1,5 @@
-import check from 'app/health/check';
+const check = require('app/health/check');
 
-export default {
+module.exports = {
 	...check
 };

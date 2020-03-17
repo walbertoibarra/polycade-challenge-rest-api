@@ -1,12 +1,12 @@
-import HttpStatus from 'http-status-codes';
+const HttpStatus = require('http-status-codes');
 
-import { list } from 'app/pricing-model';
+const { list } = require('app/pricing-model');
 
 const find = async (ctx) => {
 	ctx.status = HttpStatus.OK;
 	ctx.body = await list();
 };
 
-export default {
+module.exports = {
 	find
 };
