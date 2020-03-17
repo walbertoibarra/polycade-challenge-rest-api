@@ -1,9 +1,9 @@
 import Router from 'koa-router';
 
-import controllers from 'interfaces/http/controllers';
+import { healthController } from 'interfaces/http/controllers';
 
 const router = new Router();
 
-router.get('/health', controllers.healthController.healthCheck);
+router.get('/health', healthController.healthCheck);
 
-module.exports = router;
+export default router;

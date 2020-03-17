@@ -23,7 +23,10 @@ const stop = async () => {
 };
 
 export default {
-	db,
 	start,
 	stop
+};
+
+export {
+	db
 };
