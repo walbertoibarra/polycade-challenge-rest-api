@@ -17,14 +17,16 @@ describe('Pricing model', () => {
 		});
 
 		it('When given no name, should return 400 status code', async () => {
-			await expect(client({
-				method: 'post',
-				url: '/pricing-models',
-				data: { }
-			})).rejects.toEqual({
-				statusCode: 400,
-				errorMessage: expect.any(String)
-			});
+			expect.assertions(1);
+
+			try {
+				await client({
+					method: 'post',
+					url: '/pricing-models'
+				});
+			} catch (error) {
+				expect(error.status).toBe(400);
+			}
 		});
 
 		it('When given a name, should store it in DB', async () => {

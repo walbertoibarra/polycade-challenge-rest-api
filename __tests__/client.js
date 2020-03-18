@@ -10,7 +10,7 @@ const client = axios.create({
 // Add a response interceptor.
 client.interceptors.response.use(
 	response => response.data,
-	error => Promise.reject(error.response.data)
+	error => Promise.reject(error.response)
 );
 
 module.exports = client;

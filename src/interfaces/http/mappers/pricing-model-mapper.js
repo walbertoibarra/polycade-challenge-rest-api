@@ -3,6 +3,11 @@ const createMapper = ctx => ({
 	isDefault: ctx.request.body.isDefault || false
 });
 
+const findByIdMapper = ctx => ({
+	id: ctx.params.id
+});
+
 module.exports = {
-	createMapper
+	createMapper,
+	findByIdMapper
 };
