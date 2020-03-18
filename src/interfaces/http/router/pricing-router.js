@@ -8,6 +8,6 @@ const pricingModelRouter = new Router({ prefix: '/pricing-models' });
 pricingModelRouter.get('/', pricingModelController.find);
 pricingModelRouter.post('/', pricingModelController.create);
 pricingModelRouter.get('/:id', pricingModelController.findById);
-// pricingModelRouter.put('/:id', pricingModelController.updateById);
+pricingModelRouter.put('/:id', pricingModelController.updateById);
 
 module.exports = pricingModelRouter;

@@ -1,9 +1,9 @@
 const create = require('app/pricing-model/create');
-const findById = require('app/pricing-model/find-by-id');
 const list = require('app/pricing-model/list');
+const updateById = require('app/pricing-model/update-by-id');
 
 module.exports = {
 	...create,
-	...findById,
-	...list
+	...list,
+	...updateById
 };

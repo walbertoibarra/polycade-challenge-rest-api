@@ -6,7 +6,7 @@ const errorHandlerMiddleware = () => async (ctx, next) => {
 	} catch (error) {
 		const statusCode = error.statusCode || error.status || HttpStatus.INTERNAL_SERVER_ERROR;
 
-		console.error(error.message);
+		console.error(error.message, { stack: error.stack, statusCode });
 
 		ctx.status = statusCode;
 		ctx.set('Content-Type', 'application/json');

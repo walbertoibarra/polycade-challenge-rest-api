@@ -3,6 +3,9 @@ const { Validator, validate } = require('interfaces/http/schemas/validator');
 const validator = new Validator();
 
 const schema = {
+	id: {
+		type: 'uuid'
+	},
 	name: {
 		type: 'string',
 		empty: false

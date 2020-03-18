@@ -1,11 +1,17 @@
 const HttpStatus = require('http-status-codes');
 
-const pricingModel = require('app/pricing-model');
+const {
+	create: createPricingModel,
+	list: listPricingModels,
+	updateById: updatePricingModel
+} = require('app/pricing-model');
+const { findById: findPricingModel } = require('domain/pricing-model');
 const { pricingModelMappers } = require('interfaces/http/mappers');
 const {
 	pricingModel: {
 		create: createSchema,
-		findById: findByIdSchema
+		findById: findByIdSchema,
+		updateById: updateByIdSchema
 	}
 } = require('interfaces/http/schemas');
 const { priceConfigurationRepository } = require('infra/repositories');
@@ -15,7 +21,7 @@ const create = async (ctx) => {
 
 	createSchema.validate(data);
 
-	const model = await pricingModel.create(data);
+	const model = await createPricingModel(data);
 
 	ctx.set({
 		'Location': `/pricing-models/${model.id}`
@@ -26,7 +32,7 @@ const create = async (ctx) => {
 
 const find = async (ctx) => {
 	ctx.status = HttpStatus.OK;
-	ctx.body = await pricingModel.list();
+	ctx.body = await listPricingModels();
 };
 
 const findById = async (ctx) => {
@@ -34,7 +40,7 @@ const findById = async (ctx) => {
 
 	findByIdSchema.validate(data);
 
-	let model = await pricingModel.findById(data.id);
+	let model = await findPricingModel(data.id);
 	const pricing = await priceConfigurationRepository.findByPricingModelId(model.id);
 
 	model = model.toJSON();
@@ -44,8 +50,20 @@ const findById = async (ctx) => {
 	ctx.body = model;
 };
 
+const updateById = async (ctx) => {
+	const data = pricingModelMappers.updateByIdMapper(ctx);
+
+	updateByIdSchema.validate(data);
+
+	const model = await updatePricingModel(data);
+
+	ctx.status = HttpStatus.OK;
+	ctx.body = model;
+};
+
 module.exports = {
 	create,
 	find,
-	findById
+	findById,
+	updateById
 };
