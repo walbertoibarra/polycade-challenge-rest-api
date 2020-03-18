@@ -6,6 +6,7 @@ class PricingModel extends sequelize.Model {
 			id: {
 				type: Sequelize.UUID,
 				primaryKey: true,
+				defaultValue: Sequelize.UUIDV4,
 				allowNull: false
 			},
 			name: {
@@ -14,7 +15,8 @@ class PricingModel extends sequelize.Model {
 			},
 			isDefault: {
 				type: Sequelize.BOOLEAN,
-				allowNull: false
+				allowNull: false,
+				defaultValue: false
 			}
 		}, {
 			modelName: 'pricingModel',

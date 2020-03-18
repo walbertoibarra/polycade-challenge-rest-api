@@ -9,14 +9,17 @@
 		"seed:all": "cross-env NODE_PATH=./src sequelize-cli db:seed:all",
 		"seed:undo": "cross-env NODE_PATH=./src sequelize-cli db:seed:undo",
 		"start": "cross-env NODE_PATH=./src node .",
-		"test": "cross-env NODE_PATH=./src jest",
+		"pretest": "cross-env NODE_ENV=test npm run migrate",
+		"test": "cross-env NODE_ENV=test NODE_PATH=./src jest --runInBand --silent",
 		"watch": "cross-env NODE_PATH=./src nodemon .",
-		"watch-test": "cross-env NODE_PATH=./src jest --watch"
+		"watch-test": "cross-env NODE_ENV=test NODE_PATH=./src jest --runInBand --silent --watch"
 	},
 	"license": "MIT",
 	"dependencies": {
 		"cross-env": "7.0.2",
 		"dotenv": "8.2.0",
+		"fastest-validator": "1.0.2",
+		"http-errors": "1.7.3",
 		"http-status-codes": "1.4.0",
 		"koa": "2.11.0",
 		"koa-bodyparser": "4.2.1",
@@ -29,14 +32,24 @@
 		"uuid": "3.4.0"
 	},
 	"devDependencies": {
+		"axios": "0.19.2",
 		"eslint": "6.8.0",
 		"jest": "25.1.0",
 		"nodemon": "2.0.2"
 	},
 	"jest": {
 		"testEnvironment": "node",
+		"testRegex": [
+			"(/__tests__/.*|(\\.|/)(test|spec))\\.[jt]sx?$"
+		],
 		"testPathIgnorePatterns": [
-			"<rootDir>/node_modules"
+			"<rootDir>/node_modules",
+			"<rootDir>/__tests__/client.js",
+			"<rootDir>/__tests__/setup.js",
+			"<rootDir>/__tests__/truncate.js"
+		],
+		"setupFiles": [
+			"<rootDir>/__tests__/setup.js"
 		]
 	}
 }

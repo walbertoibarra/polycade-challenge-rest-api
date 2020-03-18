@@ -4,13 +4,17 @@ const bodyParser = require('koa-bodyparser');
 const cache = require('domain/cache');
 const httpConfig = require('config/http');
 const router = require('interfaces/http/router');
+const {
+	errorHandlerMiddleware,
+	responseHandlerMiddleware
+} = require('interfaces/http/middlewares');
 
 const app = new Koa();
 let server;
 
 app
-	// .use(errorHandlerMiddleware())
-	// .use(responseHandlerMiddleware())
+	.use(errorHandlerMiddleware())
+	.use(responseHandlerMiddleware())
 	.use(bodyParser())
 	.use(router.routes())
 	.use(router.allowedMethods());

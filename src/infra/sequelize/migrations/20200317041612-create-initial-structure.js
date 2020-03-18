@@ -4,6 +4,7 @@ module.exports = {
 			id: {
 				type: Sequelize.UUID,
 				primaryKey: true,
+				defaultValue: Sequelize.UUIDV4,
 				allowNull: false
 			},
 			name: {
@@ -31,6 +32,7 @@ module.exports = {
 			id: {
 				type: Sequelize.UUID,
 				primaryKey: true,
+				defaultValue: Sequelize.UUIDV4,
 				allowNull: false
 			},
 			price: {
@@ -77,6 +79,7 @@ module.exports = {
 			id: {
 				type: Sequelize.UUID,
 				primaryKey: true,
+				defaultValue: Sequelize.UUIDV4,
 				allowNull: false
 			},
 			name: {

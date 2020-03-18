@@ -6,6 +6,7 @@ class Machine extends sequelize.Model {
 			id: {
 				type: Sequelize.UUID,
 				primaryKey: true,
+				defaultValue: Sequelize.UUIDV4,
 				allowNull: false
 			},
 			name: {
