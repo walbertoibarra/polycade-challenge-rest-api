@@ -1,16 +1,16 @@
 const { db: { models, Sequelize: { Op } } } = require('infra/database');
 const baseRepository = require('infra/repositories/base-repository');
 
-const findByPricingModelId = async (priceModelId) => {
+const findByPricingModelId = async (pricingModelId) => {
 	const options = {
 		where: {
-			priceModelId: {
-				[Op.eq]: priceModelId
+			pricingModelId: {
+				[Op.eq]: pricingModelId
 			}
 		}
 	};
 
-	return models.priceConfiguration.findOne(options);
+	return models.priceConfiguration.findAll(options);
 };
 
 module.exports = {

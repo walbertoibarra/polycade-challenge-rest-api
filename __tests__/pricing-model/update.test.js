@@ -1,6 +1,7 @@
 const app = require('app');
 const client = require('../client');
 const truncate = require('../truncate');
+const createPricingModel = require('../factories/create-pricing-model');
 
 describe('Pricing model', () => {
 	describe('Update', () => {
@@ -17,13 +18,7 @@ describe('Pricing model', () => {
 		});
 
 		it('When given a new name, should update that record', async () => {
-			let pricingModel = await client({
-				method: 'post',
-				url: '/pricing-models',
-				data: {
-					name: 'Old name'
-				}
-			});
+			let pricingModel = await createPricingModel();
 
 			await client({
 				method: 'put',

@@ -34,6 +34,7 @@
 	"devDependencies": {
 		"axios": "0.19.2",
 		"eslint": "6.8.0",
+		"faker": "4.1.0",
 		"jest": "25.1.0",
 		"nodemon": "2.0.2"
 	},
@@ -44,6 +45,7 @@
 		],
 		"testPathIgnorePatterns": [
 			"<rootDir>/node_modules",
+			"<rootDir>/__tests__/factories",
 			"<rootDir>/__tests__/client.js",
 			"<rootDir>/__tests__/setup.js",
 			"<rootDir>/__tests__/truncate.js"

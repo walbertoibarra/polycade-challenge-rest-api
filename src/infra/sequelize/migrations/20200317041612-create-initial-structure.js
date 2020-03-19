@@ -63,7 +63,7 @@ module.exports = {
 		// Add foreign key.
 		await queryInterface.addColumn(
 			'PriceConfiguration',
-			'priceModelId',
+			'pricingModelId',
 			{
 				type: Sequelize.UUID,
 				references: {
@@ -102,7 +102,7 @@ module.exports = {
 		// Add foreign key.
 		await queryInterface.addColumn(
 			'Machine',
-			'priceModelId',
+			'pricingModelId',
 			{
 				type: Sequelize.UUID,
 				references: {

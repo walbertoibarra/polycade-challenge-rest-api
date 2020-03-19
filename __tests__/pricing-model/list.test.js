@@ -1,6 +1,7 @@
 const app = require('app');
 const client = require('../client');
 const truncate = require('../truncate');
+const createPricingModel = require('../factories/create-pricing-model');
 
 describe('Pricing model', () => {
 	describe('List', () => {
@@ -27,13 +28,7 @@ describe('Pricing model', () => {
 			// As we truncate DB, it should be 0.
 			expect(list).toHaveLength(0);
 
-			await client({
-				method: 'post',
-				url: '/pricing-models',
-				data: {
-					name: 'Test'
-				}
-			});
+			await createPricingModel();
 
 			list = await client({
 				method: 'get',

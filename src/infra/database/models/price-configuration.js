@@ -30,7 +30,7 @@ class PriceConfiguration extends sequelize.Model {
 
 	static associate ({ priceConfiguration, pricingModel }) {
 		priceConfiguration.belongsTo(pricingModel, {
-			foreignKey: 'priceModelId'
+			foreignKey: 'pricingModelId'
 		});
 	}
 }

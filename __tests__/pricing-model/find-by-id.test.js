@@ -1,6 +1,7 @@
 const app = require('app');
 const client = require('../client');
 const truncate = require('../truncate');
+const createPricingModel = require('../factories/create-pricing-model');
 
 describe('Pricing model', () => {
 	describe('Find by id', () => {
@@ -32,13 +33,7 @@ describe('Pricing model', () => {
 		it('When resource exists, should return price configurations', async () => {
 			let pricingModel;
 
-			pricingModel = await client({
-				method: 'post',
-				url: '/pricing-models',
-				data: {
-					name: 'Test'
-				}
-			});
+			pricingModel = await createPricingModel({ name: 'Test' });
 
 			// Get the just created resource.
 			pricingModel = await client({

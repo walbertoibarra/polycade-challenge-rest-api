@@ -22,7 +22,7 @@ module.exports = {
 			price: 3,
 			name: '10 minutes',
 			value: 10,
-			priceModelId: pricingModelIds[0],
+			pricingModelId: pricingModelIds[0],
 			createdAt: new Date(),
 			updatedAt: new Date()
 		}, {
@@ -30,7 +30,7 @@ module.exports = {
 			price: 5,
 			name: '20 minutes',
 			value: 20,
-			priceModelId: pricingModelIds[0],
+			pricingModelId: pricingModelIds[0],
 			createdAt: new Date(),
 			updatedAt: new Date()
 		}, {
@@ -38,7 +38,7 @@ module.exports = {
 			price: 15,
 			name: '60 minutes',
 			value: 60,
-			priceModelId: pricingModelIds[0],
+			pricingModelId: pricingModelIds[0],
 			createdAt: new Date(),
 			updatedAt: new Date()
 		}]);

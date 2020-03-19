@@ -8,6 +8,7 @@ const schema = {
 	},
 	name: {
 		type: 'string',
+		max: 128,
 		empty: false
 	},
 	isDefault: {

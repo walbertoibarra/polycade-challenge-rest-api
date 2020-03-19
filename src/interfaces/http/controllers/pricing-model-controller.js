@@ -44,7 +44,7 @@ const findById = async (ctx) => {
 	const pricing = await priceConfigurationRepository.findByPricingModelId(model.id);
 
 	model = model.toJSON();
-	model.pricing = pricing ? pricing.toJSON() : [];
+	model.pricing = pricing;
 
 	ctx.status = HttpStatus.OK;
 	ctx.body = model;

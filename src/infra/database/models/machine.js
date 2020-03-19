@@ -22,7 +22,7 @@ class Machine extends sequelize.Model {
 
 	static associate ({ machine, pricingModel }) {
 		machine.belongsTo(pricingModel, {
-			foreignKey: 'priceModelId'
+			foreignKey: 'pricingModelId'
 		});
 	}
 }

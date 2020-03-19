@@ -3,14 +3,20 @@ const { Validator, validate } = require('interfaces/http/schemas/validator');
 const validator = new Validator();
 
 const schema = {
+	pricingModelId: {
+		type: 'uuid'
+	},
+	price: {
+		type: 'number'
+	},
 	name: {
 		type: 'string',
 		max: 128,
 		empty: false
 	},
-	isDefault: {
-		type: 'boolean',
-		optional: true
+	value: {
+		type: 'number',
+		integer: true
 	},
 
 	$$strict: true
