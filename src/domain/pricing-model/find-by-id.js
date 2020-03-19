@@ -1,9 +1,9 @@
 const { NotFound } = require('http-errors');
 
-const { db: { models } } = require('infra/database');
+const { pricingModelRepository } = require('infra/repositories');
 
 const findById = async (id) => {
-	const pricingModel = await models.pricingModel.findByPk(id);
+	const pricingModel = await pricingModelRepository.findById(id);
 
 	if (!pricingModel) {
 		throw NotFound(`Pricing model with id ${id} not found`);

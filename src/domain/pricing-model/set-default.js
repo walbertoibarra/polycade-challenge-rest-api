@@ -1,9 +1,8 @@
-const { db: { models } } = require('infra/database');
 const { pricingModelRepository } = require('infra/repositories');
 
 const setDefault = async (id) => {
 	const oldDefaultModel = await pricingModelRepository.findDefault();
-	const newDefaultModel = await models.pricingModel.findByPk(id);
+	const newDefaultModel = await pricingModelRepository.findById(id);
 
 	if (oldDefaultModel) {
 		await oldDefaultModel.update({

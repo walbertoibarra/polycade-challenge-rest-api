@@ -1,5 +1,5 @@
-const { db: { models } } = require('infra/database');
 const { findById, setDefault } = require('domain/pricing-model');
+const { pricingModelRepository } = require('infra/repositories');
 
 const updateById = async (data) => {
 	const { id, isDefault, ...newData } = data;
@@ -13,7 +13,7 @@ const updateById = async (data) => {
 		await setDefault(pricingModel.id);
 	}
 
-	return models.pricingModel.findByPk(pricingModel.id);
+	return pricingModelRepository.findById(pricingModel.id);
 };
 
 module.exports = {
