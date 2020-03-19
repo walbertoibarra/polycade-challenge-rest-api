@@ -1,4 +1,5 @@
 const { db: { models, Sequelize: { Op } } } = require('infra/database');
+const baseRepository = require('infra/repositories/base-repository');
 
 const findByPricingModelId = async (priceModelId) => {
 	const options = {
@@ -13,5 +14,6 @@ const findByPricingModelId = async (priceModelId) => {
 };
 
 module.exports = {
+	...baseRepository(models.priceConfiguration),
 	findByPricingModelId
 };
