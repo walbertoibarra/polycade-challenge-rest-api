@@ -2,6 +2,7 @@ const HttpStatus = require('http-status-codes');
 
 const {
 	deletePricingModel,
+	getPricingModel,
 	updatePricingModel
 } = require('app/machine');
 const { machineMappers } = require('interfaces/http/mappers');
@@ -31,6 +32,11 @@ const deleteMachinePricingModel = async (ctx) => {
 	ctx.body = await deletePricingModel(ctx.params.id, ctx.params.pmId);
 };
 
+const getMachinePricing = async (ctx) => {
+	ctx.status = HttpStatus.OK;
+	ctx.body = await getPricingModel(ctx.params.id);
+};
+
 const updateMachinePricingModel = async (ctx) => {
 	ctx.status = HttpStatus.OK;
 	ctx.body = await updatePricingModel(ctx.params.id, ctx.params.pmId);
@@ -39,5 +45,6 @@ const updateMachinePricingModel = async (ctx) => {
 module.exports = {
 	create,
 	deleteMachinePricingModel,
+	getMachinePricing,
 	updateMachinePricingModel
 };

@@ -8,6 +8,6 @@ const machineRouter = new Router({ prefix: '/machines' });
 machineRouter.post('/', machineController.create);
 machineRouter.put('/:id/prices/:pmId', machineController.updateMachinePricingModel);
 machineRouter.delete('/:id/prices/:pmId', machineController.deleteMachinePricingModel);
-// machineRouter.get('/:id/prices', machineController.listPricingModels);
+machineRouter.get('/:id/prices', machineController.getMachinePricing);
 
 module.exports = machineRouter;
