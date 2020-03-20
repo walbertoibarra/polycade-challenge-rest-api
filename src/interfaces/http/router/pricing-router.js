@@ -14,7 +14,7 @@ pricingModelRouter.put('/:id', pricingModelController.updateById);
 // Price configuration routes.
 priceConfigurationRouter.get('/', priceConfigurationController.findByPricingModelId);
 priceConfigurationRouter.post('/', priceConfigurationController.create);
-// priceConfigurationRouter.delete('/:id', priceConfigurationController.remove);
+priceConfigurationRouter.delete('/:id', priceConfigurationController.deleteById);
 
 // Mount price configuration routes on pricing model router.
 pricingModelRouter.use(

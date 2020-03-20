@@ -1,7 +1,15 @@
 const { db: { Sequelize: { Op } } } = require('infra/database');
 
-module.exports = (model) => {
-	const create = async (data) => model.create(data);
+module.exports = (Model) => {
+	const create = async (data) => Model.create(data);
+
+	const deleteById = async (id) => {
+		const model = await Model.findByPk(id);
+
+		await model.destroy();
+
+		return model;
+	};
 
 	const findById = async (id) => {
 		const options = {
@@ -14,7 +22,7 @@ module.exports = (model) => {
 			limit: 1
 		};
 
-		const results = await model.findAll(options);
+		const results = await Model.findAll(options);
 
 		return results.length ? results[0] : null;
 	};
@@ -31,11 +39,12 @@ module.exports = (model) => {
 			]
 		};
 
-		return model.findAll(options);
+		return Model.findAll(options);
 	};
 
 	return {
 		create,
+		deleteById,
 		findById,
 		list
 	};
