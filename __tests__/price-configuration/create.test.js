@@ -2,7 +2,6 @@ const app = require('app');
 const client = require('../client');
 const truncate = require('../truncate');
 const createPricingModel = require('../factories/create-pricing-model');
-const createPriceConfigurationModel = require('../factories/create-price-configuration-model');
 
 describe('Price configuration', () => {
 	describe('Create', () => {

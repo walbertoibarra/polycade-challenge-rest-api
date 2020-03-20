@@ -1,7 +1,8 @@
 const HttpStatus = require('http-status-codes');
 
 const {
-	create: createPriceConfigurationModel
+	create: createPriceConfigurationModel,
+	listByPricingModel: listPriceConfigurationsByPricingModelId
 } = require('app/price-configuration');
 const { priceConfigurationMappers } = require('interfaces/http/mappers');
 const {
@@ -24,6 +25,12 @@ const create = async (ctx) => {
 	ctx.body = model;
 };
 
+const findByPricingModelId = async (ctx) => {
+	ctx.status = HttpStatus.OK;
+	ctx.body = await listPriceConfigurationsByPricingModelId(ctx.params.pmId);
+};
+
 module.exports = {
-	create
+	create,
+	findByPricingModelId
 };
