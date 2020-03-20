@@ -1,5 +1,8 @@
 const HttpStatus = require('http-status-codes');
 
+const {
+	updatePricingModel
+} = require('app/machine');
 const { machineMappers } = require('interfaces/http/mappers');
 const {
 	machine: {
@@ -22,6 +25,12 @@ const create = async (ctx) => {
 	ctx.body = model;
 };
 
+const updateMachinePricingModel = async (ctx) => {
+	ctx.status = HttpStatus.OK;
+	ctx.body = await updatePricingModel(ctx.params.id, ctx.params.pmId);
+};
+
 module.exports = {
-	create
+	create,
+	updateMachinePricingModel
 };

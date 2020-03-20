@@ -2,7 +2,7 @@ const app = require('app');
 const client = require('../client');
 const truncate = require('../truncate');
 const createPricingModel = require('../factories/create-pricing-model');
-const createPriceConfigurationModel = require('../factories/create-price-configuration-model');
+const createPriceConfiguration = require('../factories/create-price-configuration');
 
 describe('Price configuration', () => {
 	describe('List', () => {
@@ -42,7 +42,7 @@ describe('Price configuration', () => {
 
 			expect(priceConfigurations).toHaveLength(0);
 
-			await createPriceConfigurationModel(pricingModel.id);
+			await createPriceConfiguration(pricingModel.id);
 
 			priceConfigurations = await client({
 				method: 'get',

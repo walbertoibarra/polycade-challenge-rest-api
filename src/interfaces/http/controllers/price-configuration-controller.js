@@ -1,7 +1,7 @@
 const HttpStatus = require('http-status-codes');
 
 const {
-	create: createPriceConfigurationModel,
+	create: createPriceConfiguration,
 	listByPricingModel: listPriceConfigurationsByPricingModelId,
 	remove: deletePriceConfiguration
 } = require('app/price-configuration');
@@ -17,7 +17,7 @@ const create = async (ctx) => {
 
 	createSchema.validate(data);
 
-	const model = await createPriceConfigurationModel(data);
+	const model = await createPriceConfiguration(data);
 
 	ctx.set({
 		'Location': `/pricing-models/${data.pmId}/prices/${model.id}`
@@ -27,12 +27,8 @@ const create = async (ctx) => {
 };
 
 const deleteById = async (ctx) => {
-	const model = await deletePriceConfiguration(ctx.params.pmId, ctx.params.id);
-
-	console.log(model.toJSON());
-
 	ctx.status = HttpStatus.OK;
-	ctx.body = model;
+	ctx.body = await deletePriceConfiguration(ctx.params.pmId, ctx.params.id);
 };
 
 const findByPricingModelId = async (ctx) => {

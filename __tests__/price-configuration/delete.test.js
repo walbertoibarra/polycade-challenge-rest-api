@@ -2,7 +2,7 @@ const app = require('app');
 const client = require('../client');
 const truncate = require('../truncate');
 const createPricingModel = require('../factories/create-pricing-model');
-const createPriceConfigurationModel = require('../factories/create-price-configuration-model');
+const createPriceConfiguration = require('../factories/create-price-configuration');
 
 describe('Price configuration', () => {
 	describe('Delete', () => {
@@ -22,7 +22,7 @@ describe('Price configuration', () => {
 			expect.assertions(3);
 
 			const pricingModel = await createPricingModel();
-			const priceConfiguration = await createPriceConfigurationModel(pricingModel.id);
+			const priceConfiguration = await createPriceConfiguration(pricingModel.id);
 
 			try {
 				await client({
