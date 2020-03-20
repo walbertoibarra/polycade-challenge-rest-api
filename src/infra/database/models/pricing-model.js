@@ -24,6 +24,13 @@ class PricingModel extends sequelize.Model {
 			tableName: 'PricingModel'
 		});
 	}
+
+	static associate ({ priceConfiguration, pricingModel }) {
+		pricingModel.hasMany(priceConfiguration, {
+			foreignKey: 'pricingModelId',
+			as: 'pricing'
+		});
+	}
 }
 
 module.exports = PricingModel;

@@ -41,10 +41,6 @@ const findById = async (ctx) => {
 	findByIdSchema.validate(data);
 
 	let model = await findPricingModel(data.id);
-	const pricing = await priceConfigurationRepository.findByPricingModelId(model.id);
-
-	model = model.toJSON();
-	model.pricing = pricing;
 
 	ctx.status = HttpStatus.OK;
 	ctx.body = model;

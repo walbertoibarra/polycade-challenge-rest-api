@@ -36,10 +36,11 @@ describe('Pricing model', () => {
 				data: {
 					name: 'Test'
 				}
-			})).resolves.toEqual({
+			})).resolves.toMatchObject({
 				id: expect.any(String),
 				name: 'Test',
 				isDefault: false,
+				pricing: expect.any(Array),
 				createdAt: expect.any(String),
 				updatedAt: expect.any(String),
 				deletedAt: null
@@ -54,10 +55,11 @@ describe('Pricing model', () => {
 					name: 'Test',
 					isDefault: true
 				}
-			})).resolves.toEqual({
+			})).resolves.toMatchObject({
 				id: expect.any(String),
 				name: 'Test',
 				isDefault: true,
+				pricing: expect.any(Array),
 				createdAt: expect.any(String),
 				updatedAt: expect.any(String),
 				deletedAt: null
