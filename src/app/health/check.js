@@ -29,13 +29,15 @@ const check = async () => {
 		console.warn(`Node status is: ${Status.Unhealthy}`, problems);
 	}
 
+	const uptime = cache.httpBootTime ? (new Date()).getTime() - cache.httpBootTime : 0;
+
 	return {
 		nodeStatus: problems.length
 			? Status.Unhealthy
 			: Status.Healthy,
 		problems,
 		instance: config.node.appInstance,
-		uptime: prettyMilliseconds((new Date()).getTime() - cache.httpBootTime),
+		uptime: prettyMilliseconds(uptime),
 		name: config.name,
 		version: config.version
 	};

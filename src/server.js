@@ -5,7 +5,7 @@ require('dotenv').config({
 	path: path.join(__dirname, '../.env')
 });
 
-const application = require('app');
+const app = require('app');
 const config = require('config');
 
 const gracefulShutdown = () => {
@@ -14,7 +14,7 @@ const gracefulShutdown = () => {
 
 	console.log('Will try to clean up before shutting down');
 
-	application
+	app
 		.stop()
 		.then(() => {
 			console.log('Gracefully shut down');
@@ -58,7 +58,7 @@ setupProcessEvents();
 console.log('Configuration used on this instance', config);
 
 // Actually start the server.
-application
+app
 	.start()
 	.catch((error) => {
 		console.error(error.message);

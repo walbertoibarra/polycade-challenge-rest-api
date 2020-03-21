@@ -27,6 +27,7 @@ const stop = async () => {
 };
 
 module.exports = {
+	httpApp: http.app,
 	start,
 	stop
 };

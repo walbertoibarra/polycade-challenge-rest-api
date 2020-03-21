@@ -61,6 +61,7 @@ const stop = () => {
 };
 
 module.exports = {
+	app,
 	listen,
 	stop
 };
